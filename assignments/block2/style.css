@@ -1,0 +1,49 @@
+.graph {
+    width: 700px;
+    background-color: rgb(250, 239, 233);
+}
+
+.title {
+    text-align: center;
+    font-family: 'Chakra Petch', sans-serif;
+    color: rgb(60, 60, 60);
+    letter-spacing: 1px;
+}
+
+.title h1 {
+    font-size: 21px;
+    padding-top: 26px;
+    font-weight: bolder;
+    margin: 0px;
+}
+
+.title h2 {
+    font-size: 12px;
+    font-weight: lighter;
+    margin: 0px;
+}
+
+rect {
+    fill: rgb(169, 169, 169);
+}
+
+rect.active {
+    fill: rgb(167, 68, 87);
+}
+
+path {
+    stroke: rgb(169, 169, 169);
+    fill: transparent;
+    stroke-width: 8px;
+}
+
+path.active {
+    stroke: rgb(167, 68, 87);
+}
+
+text {
+    font-color: rgb(60, 60, 60);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+}

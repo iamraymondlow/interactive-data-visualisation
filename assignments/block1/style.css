@@ -1,0 +1,49 @@
+.graph {
+    width: 700px;
+    background-color: rgb(250, 239, 233);
+}
+
+.title {
+    text-align: center;
+    font-family: 'Chakra Petch', sans-serif;
+    color: rgb(60, 60, 60);
+}
+
+.title h1, .title text {
+    font-size: 21px;
+    padding-top: 26px;
+    margin: 0px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+
+.title h2 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin: 0px;
+    font-weight: lighter;
+}
+
+.bar rect {
+    fill: rgb(167, 68, 87);
+    height: 8px;
+}
+
+.bar path {
+    stroke: rgb(167, 68, 87);
+    stroke-width: 8px;
+    fill: transparent;
+}
+
+.bracket path {
+    stroke: rgb(60, 60, 60);
+    stroke-width: 1px;
+    fill: transparent;
+}
+
+.bar text {
+    font-color: rgb(60, 60, 60);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+}
