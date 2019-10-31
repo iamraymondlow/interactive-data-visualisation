@@ -1,0 +1,17 @@
+.card.description {
+    max-height: 20rem;
+}
+
+.card-header {
+    background-color: white;
+}
+
+.dropdown-icon {
+    width:25px;
+    padding:0px;
+}
+
+#mapContainer {
+    width: 100%;
+    height: 600px;
+}

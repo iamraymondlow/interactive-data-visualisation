@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta name="viewport" content="initial-scale=1.0,
+    width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-clustering.js"></script>
+    <title>Interactive Data Visualisation</title>
+</head>
+<body>
+<!--Code for navigation bar (START)-->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    <a class="navbar-brand" href="projectdescription.html">Interactive Data Visualisation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="projectdescription.html">Project Description</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--Code for navigation bar (END)-->
+
+<!--Code for graphs (START)-->
+<div data-spy="scroll" data-target="#sidebar" data-offset="0">
+    <div class="container-fluid" id="general">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">Data Collection Progress Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <h5 class="card-title">Batch Size</h5>
+                            <canvas id="batchSize"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Vehicle Type</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="vehicleType-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" value="Batch1">Batch 1</a>
+                                    <a class="dropdown-item" value="Batch2">Batch 2</a>
+                                    <a class="dropdown-item" value="Batch3">Batch 3</a>
+                                    <a class="dropdown-item" value="Batch4">Batch 4</a>
+                                    <a class="dropdown-item" value="Batch5">Batch 5</a>
+                                    <a class="dropdown-item" value="AllBatch">All Batches</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="vehicleType"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Industry Type</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="industryType-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Batch 1</a>
+                                    <a class="dropdown-item">Batch 2</a>
+                                    <a class="dropdown-item">Batch 3</a>
+                                    <a class="dropdown-item">Batch 4</a>
+                                    <a class="dropdown-item">Batch 5</a>
+                                    <a class="dropdown-item">All Batches</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="industryType"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Commodity Type</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="commodityType-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Batch 1</a>
+                                    <a class="dropdown-item">Batch 2</a>
+                                    <a class="dropdown-item">Batch 3</a>
+                                    <a class="dropdown-item">Batch 4</a>
+                                    <a class="dropdown-item">Batch 5</a>
+                                    <a class="dropdown-item">All Batches</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="commodityType"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Place Type</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="placeType-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Batch 1</a>
+                                    <a class="dropdown-item">Batch 2</a>
+                                    <a class="dropdown-item">Batch 3</a>
+                                    <a class="dropdown-item">Batch 4</a>
+                                    <a class="dropdown-item">Batch 5</a>
+                                    <a class="dropdown-item">All Batches</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="placeType"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p></p>
+
+    <div class="container-fluid" id="activity">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">Activity Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <div class="row">
+                                <h5 class="card-title col-sm-10">Activity Conducted</h5>
+                                <div class="dropdown col-sm-2 align-top">
+                                    <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                    </button>
+                                    <div class="dropdown-menu" id="activityType-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item">Articulated Vehicle</a>
+                                        <a class="dropdown-item">Cement Mixer</a>
+                                        <a class="dropdown-item">Mobile Crane</a>
+                                        <a class="dropdown-item">Recovery Vehicle</a>
+                                        <a class="dropdown-item">Tipper</a>
+                                        <a class="dropdown-item">Single Unit</a>
+                                        <a class="dropdown-item">Truck</a>
+                                        <a class="dropdown-item">Truck-Crane</a>
+                                        <a class="dropdown-item">Truck-Detachable Trailer</a>
+                                        <a class="dropdown-item">Truck-Other</a>
+                                        <a class="dropdown-item">Bus</a>
+                                        <a class="dropdown-item">Others</a>
+                                        <a class="dropdown-item">All Vehicle Types</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <canvas id="activityType"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <h5 class="card-title">First Activity for Buses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="busFirstActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">First Activity for Other Vehicle Types</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="freightFirstActivity-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Articulated Vehicle</a>
+                                    <a class="dropdown-item">Cement Mixer</a>
+                                    <a class="dropdown-item">Mobile Crane</a>
+                                    <a class="dropdown-item">Recovery Vehicle</a>
+                                    <a class="dropdown-item">Tipper</a>
+                                    <a class="dropdown-item">Single Unit</a>
+                                    <a class="dropdown-item">Truck</a>
+                                    <a class="dropdown-item">Truck-Crane</a>
+                                    <a class="dropdown-item">Truck-Detachable Trailer</a>
+                                    <a class="dropdown-item">Truck-Other</a>
+                                    <a class="dropdown-item">Others</a>
+                                    <a class="dropdown-item">All Vehicle Types</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="freightFirstActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <h5 class="card-title">Second Activity for Buses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="busSecondActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Second Activity for Other Vehicle Types</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="freightSecondActivity-dropdown"  aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Articulated Vehicle</a>
+                                    <a class="dropdown-item">Cement Mixer</a>
+                                    <a class="dropdown-item">Mobile Crane</a>
+                                    <a class="dropdown-item">Recovery Vehicle</a>
+                                    <a class="dropdown-item">Tipper</a>
+                                    <a class="dropdown-item">Single Unit</a>
+                                    <a class="dropdown-item">Truck</a>
+                                    <a class="dropdown-item">Truck-Crane</a>
+                                    <a class="dropdown-item">Truck-Detachable Trailer</a>
+                                    <a class="dropdown-item">Truck-Other</a>
+                                    <a class="dropdown-item">Others</a>
+                                    <a class="dropdown-item">All Vehicle Types</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="freightSecondActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <h5 class="card-title">Second Last Activity for Buses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="busSecondLastActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Second Last Activity for Other Vehicle Types</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="freightSecondLastActivity-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Articulated Vehicle</a>
+                                    <a class="dropdown-item">Cement Mixer</a>
+                                    <a class="dropdown-item">Mobile Crane</a>
+                                    <a class="dropdown-item">Recovery Vehicle</a>
+                                    <a class="dropdown-item">Tipper</a>
+                                    <a class="dropdown-item">Single Unit</a>
+                                    <a class="dropdown-item">Truck</a>
+                                    <a class="dropdown-item">Truck-Crane</a>
+                                    <a class="dropdown-item">Truck-Detachable Trailer</a>
+                                    <a class="dropdown-item">Truck-Other</a>
+                                    <a class="dropdown-item">Others</a>
+                                    <a class="dropdown-item">All Vehicle Types</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="freightSecondLastActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <h5 class="card-title">Last Activity for Buses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="busLastActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <h5 class="card-title col-sm-10">Last Activity for Other Vehicle Types</h5>
+                            <div class="dropdown col-sm-2 align-top">
+                                <button class="btn btn-transparent dropdown-toggle float-right dropdown-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://www.freeiconspng.com/uploads/filter-icon-32.png" height="20" width="20"/>
+                                </button>
+                                <div class="dropdown-menu" id="freightLastActivity-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item">Articulated Vehicle</a>
+                                    <a class="dropdown-item">Cement Mixer</a>
+                                    <a class="dropdown-item">Mobile Crane</a>
+                                    <a class="dropdown-item">Recovery Vehicle</a>
+                                    <a class="dropdown-item">Tipper</a>
+                                    <a class="dropdown-item">Single Unit</a>
+                                    <a class="dropdown-item">Truck</a>
+                                    <a class="dropdown-item">Truck-Crane</a>
+                                    <a class="dropdown-item">Truck-Detachable Trailer</a>
+                                    <a class="dropdown-item">Truck-Other</a>
+                                    <a class="dropdown-item">Others</a>
+                                    <a class="dropdown-item">All Vehicle Types</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="freightLastActivity"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p></p>
+
+    <div class="container-fluid" id="map">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <div class="row">
+                            <h5 class="card-title col-sm-2">Map</h5>
+                            <div class="col-sm-10 align-top">
+                                <div class="btn-group btn-group-toggle float-right" id="radioButtons" data-toggle="buttons">
+                                    <label id="stopDistribution-label" class="btn btn-info btn-sm active">
+                                        <input type="radio" id="stopDistribution-radioButton"> Stop Distribution
+                                    </label>
+                                    <label id="stopDuration-label" class="btn btn-info btn-sm">
+                                        <input type="radio" id="stopDuration-radioButton"> Stop Duration
+                                    </label>
+                                    <label class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <input type="radio"> Activity Type
+                                    </label>
+                                    <div class="dropdown-menu" id="map-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item">Pickup Cargo</a>
+                                        <a class="dropdown-item">Deliver Cargo</a>
+                                        <a class="dropdown-item">Fail</a>
+                                        <a class="dropdown-item">Pickup Container</a>
+                                        <a class="dropdown-item">Dropoff Container</a>
+                                        <a class="dropdown-item">Pickup Trailer</a>
+                                        <a class="dropdown-item">Dropoff Trailer</a>
+                                        <a class="dropdown-item">Provide Service</a>
+                                        <a class="dropdown-item">Passenger</a>
+                                        <a class="dropdown-item">Fueling</a>
+                                        <a class="dropdown-item">Maintenance</a>
+                                        <a class="dropdown-item">Resting</a>
+                                        <a class="dropdown-item">Meal</a>
+                                        <a class="dropdown-item">Shift</a>
+                                        <a class="dropdown-item">OtherWork</a>
+                                        <a class="dropdown-item">Queuing</a>
+                                        <a class="dropdown-item">Personal</a>
+                                        <a class="dropdown-item">Other</a>
+                                        <a class="dropdown-item">All Activities</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <div id="mapContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Code for graphs (END)-->
+
+<script>
+    var platform = new H.service.Platform({
+        'app_id': 'xgnL1N1qEfuI0756Trti',
+        'app_code': 'r49h-O5NOWYkF64ZaS5ntQ'
+    });
+</script>
+
+<script src="node_modules/chart.js/dist/Chart.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="index.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
